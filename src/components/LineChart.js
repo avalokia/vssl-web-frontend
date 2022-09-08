@@ -1,10 +1,10 @@
 import React from "react";
-import { Bar } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 import { Chart } from 'chart.js/auto'
 
-function BarChart ({xAxisData, yAxisData}) {
+function LineChart ({xAxisData, yAxisData}) {
     return <div> 
-        <Bar
+        <Line
         data={{
           labels: xAxisData,
           datasets: [
@@ -29,7 +29,7 @@ function BarChart ({xAxisData, yAxisData}) {
                 },
                 x: {
                     grid: {display: false}, //hide x-axis grid
-                    title: {display: true, text: 'Branch', font: {weight: 'bold'}} //x-axis title styling
+                    title: {display: true, text: 'Days', font: {weight: 'bold'}} //x-axis title styling
                 }
           },
           plugins: {
@@ -40,4 +40,4 @@ function BarChart ({xAxisData, yAxisData}) {
     </div>
 }
 
-export default BarChart;
+export default LineChart;
