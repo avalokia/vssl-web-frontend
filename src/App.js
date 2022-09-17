@@ -33,16 +33,18 @@ class App extends React.Component {
   render() {
     const { DataisLoaded, items } = this.state;
     if (!DataisLoaded) return <div> <h1> Please wait some time... </h1></div>;
-    let today = new Date; //Date(2022,3,5);
+    let today = new Date(); //Date(2022,3,5);
     let firstDayOfTheWeek = new Date(today.getFullYear(),today.getMonth(),today.getDate()-today.getDay()+1); //start from monday
     let lastDayOfTheWeek = new Date(today.getFullYear(),today.getMonth(),today.getDate()-today.getDay()+7);
-    // console.log(today + ' ' + firstDayOfTheWeek + ' ' + lastDayOfTheWeek);
-    
+    let fd = firstDayOfTheWeek.toLocaleString('id-ID');
+    let ld = lastDayOfTheWeek.toLocaleString('id-ID');
+    console.log(today + ' ' + firstDayOfTheWeek + ' ' + lastDayOfTheWeek);
+    console.log('fd = ' + fd);
     for (let j = firstDayOfTheWeek; j < lastDayOfTheWeek; j.setDate(j.getDate()+1)){
-      console.log('j = ' + j);
-      console.log(items.data.length);
+      //console.log('j = ' + j);
+      //console.log(items.data.length);
       for (let i = 0; i < items.data.length; i++){
-        console.log(new Date(items.data[i].Timestamp));
+        //console.log(new Date(items.data[i].Timestamp));
         //console.log(new Date(items.data[i].Timestamp) + ' > ' + j)
         if (new Date(items.data[i].Timestamp) > j && new Date(items.data[i].Timestamp) < j.getDate()+1) {
           //console.log('items.data[i].Timestamp' + items.data[i].Timestamp + ' > ' + j)
@@ -55,8 +57,8 @@ class App extends React.Component {
         
         <h1> Vessel Barbershop </h1>
         <p> Current Date = { String(today) } </p>
-        <p> Start of The Week = { String(firstDayOfTheWeek) } </p>
-        <p> End of The Week = {String(lastDayOfTheWeek)} </p>
+        <p> Start of The Week = { fd } </p>
+        <p> End of The Week = {ld} </p>
 
         <p>Customers of the week = { items.customerOfTheWeek }</p>
         {
